@@ -1,4 +1,4 @@
-Life Achievements
+#Life Achievements
 
 This is a simple project for building a web app that will allow people to add, mark and share life achievements. 
 
