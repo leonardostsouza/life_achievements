@@ -1,13 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<h1>User Achievement</h1>
+
 <p>
   <strong>User:</strong>
-  <%= @user_achievement.user_id %>
+  <%= User.find(@user_achievement.user_id).name %>
 </p>
 
 <p>
   <strong>Achievement:</strong>
-  <%= @user_achievement.achievement_id %>
+  <blockquote>
+	  <% @achievement = Achievement.find(@user_achievement.achievement_id) %>
+	  <p>Title: <%= @achievement.title %></p>
+	  <p>Description: <%= @achievement.description%></p>
+	  <p>Phrase: <i>"<%= @achievement.phrase %>"</i></p>
+  </blockquote>
+  
 </p>
 
 <%= link_to 'Edit', edit_user_achievement_path(@user_achievement) %> |
