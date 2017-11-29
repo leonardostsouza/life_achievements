@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<% @userAchievements = UserAchievement.where(user_id: @user.id) %>
+<p>
+  <strong>Achievements:</strong>
+  <% if @userAchievements.length < 1 %>
+  <p>NO ACHIEVEMENTS TO SHOW :-(</p>
+  <% else %>
+  <table>
+    <% @userAchievements.each do |ua| %>
+    <% @achievement = Achievement.find(ua.achievement_id) %>
+      <tr>
+        <td><%= @achievement.title %></td>
+        <td><%= link_to 'Show', ua %></td>
+        <td><%= link_to 'Destroy', ua, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
